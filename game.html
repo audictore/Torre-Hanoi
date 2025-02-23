@@ -40,6 +40,7 @@
             align-items: center;
             padding: 2rem;
             box-sizing: border-box;
+            user-select: none;
         }
 
         header nav{
@@ -79,17 +80,17 @@
             height: 3rem;
         }
 
-        main{
+        .juego_3_aros, .juego_4_aros, .juego_5_aros, .juego_6_aros, .juego_7_aros{
             width: 100%;
             height: 80%;
-            display: flex;
+            display: none;
             justify-content: space-around;
             align-items: center;
             padding: 2rem;
             box-sizing: border-box;
         }
 
-        .torre_1, .torre_2, .torre_3{
+        .torre_1, .torre_2, .torre_3_1, .torre_3_2, .torre_3_3, .torre_3_4, .torre_3_5{
             width: 20%;
             height: 70%;
             display: flex;
@@ -99,7 +100,7 @@
             position: relative;
         }
 
-        .aro_1, .aro_2, .aro_3{
+        .aro_1, .aro_2, .aro_3, .aro_4, .aro_5, .aro_6, .aro_7{
             height: 10%;
             display: flex;
             justify-content: center;
@@ -112,17 +113,28 @@
             font-family: var(--font-family-poppins);
             border: solid 1px;
             border-color: black;
+            user-select: none;
         }
 
         .aro_1{
+            width: 30%;
+        }
+        .aro_2{
+            width: 40%;
+        }
+        .aro_3{
+            width: 50%;
+        }
+        .aro_4{
+            width: 60%;
+        }
+        .aro_5{
             width: 70%;
         }
-
-        .aro_2{
+        .aro_6{
             width: 80%;
         }
-
-        .aro_3{
+        .aro_7{
             width: 90%;
         }
 
@@ -138,11 +150,54 @@
             width: 100%;
             height: 10%;
             background-color: var(--color-aquamarine);
+            color: transparent;
+            user-select: none;
         }
 
         section{
             width: 100%;
             height: 10%;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+
+        }
+
+        section button{
+            width: 20%;
+            height: 4rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--color-oxford-blue);
+            color: var(--color-aquamarine);
+            font-size: var(--font-size-sm);
+            cursor: pointer;
+            border: solid 1px var(--color-aquamarine);
+            border-radius: 5px;
+        }
+
+        section button:hover{
+            width: 25%;
+            height: 4rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--color-aquamarine);
+            color: var(--color-oxford-blue);
+            font-size: var(--font-size-sm);
+            border: solid 1px var(--color-aquamarine);
+            border-radius: 5px;
+        }
+
+        section span{
+            width: 25%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: var(--font-size-sm);
+            font-family: var(--font-family-poppins);
+            color: var(--color-aquamarine);
         }
 
     </style>
@@ -156,13 +211,13 @@
                 <a href="./index.html"><img src="./assets/vietnam.png">&nbsp;&nbsp;Home</a>
             </ul>
             <ul>
-                <span class="span_name_user" id="span_name_user"></span>
+                <span>Nombre usuario: <span class="span_name_user" id="span_name_user"></span></span>
                 <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Cantidad de aros: <span class="span_cantidad_aros_introduccida" id="span_cantidad_aros_introduccida"></span></span>
             </ul>
         </nav>
     </header>
 
-    <main>
+    <main class="juego_3_aros">
         <div class="torre torre_1">
             <div class="aro aro_1" draggable="true">1</div>
             <div class="aro aro_2" draggable="true">2</div>
@@ -174,7 +229,89 @@
             <div class="poste"></div>
             <div class="base"></div>
         </div>
-        <div class="torre torre_3">
+        <div class="torre torre_3_1">
+            <div class="poste"></div>
+            <div class="base"></div>
+        </div>
+    </main>
+
+    <main class="juego_4_aros">
+        <div class="torre torre_1">
+            <div class="aro aro_1" draggable="true">1</div>
+            <div class="aro aro_2" draggable="true">2</div>
+            <div class="aro aro_3" draggable="true">3</div>
+            <div class="aro aro_4" draggable="true">4</div>
+            <div class="poste"></div>
+            <div class="base"></div>
+        </div>
+        <div class="torre torre_2">
+            <div class="poste"></div>
+            <div class="base"></div>
+        </div>
+        <div class="torre torre_3_2">
+            <div class="poste"></div>
+            <div class="base"></div>
+        </div>
+    </main>
+
+    <main class="juego_5_aros">
+        <div class="torre torre_1">
+            <div class="aro aro_1" draggable="true">1</div>
+            <div class="aro aro_2" draggable="true">2</div>
+            <div class="aro aro_3" draggable="true">3</div>
+            <div class="aro aro_4" draggable="true">4</div>
+            <div class="aro aro_5" draggable="true">5</div>
+            <div class="poste"></div>
+            <div class="base"></div>
+        </div>
+        <div class="torre torre_2">
+            <div class="poste"></div>
+            <div class="base"></div>
+        </div>
+        <div class="torre torre_3_3">
+            <div class="poste"></div>
+            <div class="base"></div>
+        </div>
+    </main>
+
+    <main class="juego_6_aros">
+        <div class="torre torre_1">
+            <div class="aro aro_1" draggable="true">1</div>
+            <div class="aro aro_2" draggable="true">2</div>
+            <div class="aro aro_3" draggable="true">3</div>
+            <div class="aro aro_4" draggable="true">4</div>
+            <div class="aro aro_5" draggable="true">5</div>
+            <div class="aro aro_6" draggable="true">6</div>
+            <div class="poste"></div>
+            <div class="base"></div>
+        </div>
+        <div class="torre torre_2">
+            <div class="poste"></div>
+            <div class="base"></div>
+        </div>
+        <div class="torre torre_3_4">
+            <div class="poste"></div>
+            <div class="base"></div>
+        </div>
+    </main>
+
+    <main class="juego_7_aros">
+        <div class="torre torre_1">
+            <div class="aro aro_1" draggable="true">1</div>
+            <div class="aro aro_2" draggable="true">2</div>
+            <div class="aro aro_3" draggable="true">3</div>
+            <div class="aro aro_4" draggable="true">4</div>
+            <div class="aro aro_5" draggable="true">5</div>
+            <div class="aro aro_6" draggable="true">6</div>
+            <div class="aro aro_7" draggable="true">7</div>
+            <div class="poste"></div>
+            <div class="base"></div>
+        </div>
+        <div class="torre torre_2">
+            <div class="poste"></div>
+            <div class="base"></div>
+        </div>
+        <div class="torre torre_3_5">
             <div class="poste"></div>
             <div class="base"></div>
         </div>
@@ -182,7 +319,9 @@
 
     <section>
         <button>Reiniciar</button>
-        <span>Movimientos: </span>
+        <span>Tiempo: <span id="cronometro"></span></span>
+        <span>Movimientos minimos: <span class="span_movimientos_minimos" id="span_movimientos_minimos"></span></span>
+        <span>Movimientos realizados: <span class="span_cantidad_movimientos" id="span_cantidad_movimientos">0</span> </span>
     </section>
     
 
@@ -192,13 +331,134 @@
         let span_name_user = document.getElementById("span_name_user")
         let span_cantidad_aros_introduccida = document.getElementById("span_cantidad_aros_introduccida")
 
+        let juego_3_aros = document.querySelector(".juego_3_aros")
+        let juego_4_aros = document.querySelector(".juego_4_aros")
+        let juego_5_aros = document.querySelector(".juego_5_aros")
+        let juego_6_aros = document.querySelector(".juego_6_aros")
+        let juego_7_aros = document.querySelector(".juego_7_aros")
+
         let aros = document.querySelectorAll(".aro")
         let torres = document.querySelectorAll(".torre")
+        let torre_1 = document.querySelector(".torre_1")
+        let torre_2 = document.querySelector(".torre_2")
+        let torre_3_1 = document.querySelector(".torre_3_1")
+        let torre_3_2 = document.querySelector(".torre_3_2")
+        let torre_3_3 = document.querySelector(".torre_3_3")
+        let torre_3_4 = document.querySelector(".torre_3_4")
+        let torre_3_5 = document.querySelector(".torre_3_5")
+        let aroSeleccionado = null
+
+        let span_movimientos_minimos = document.getElementById("span_movimientos_minimos")
+        let span_cantidad_movimientos = document.getElementById("span_cantidad_movimientos")
+        let contador_movimientos = 0
 
         span_name_user.innerHTML = name_user
         span_cantidad_aros_introduccida.innerHTML = cantidad_aros_introduccida
 
+        if(cantidad_aros_introduccida === 3){
+            juego_3_aros.style.display = "flex";
 
+        }else if(cantidad_aros_introduccida === 4){
+            juego_4_aros.style.display = "flex";
+
+        }else if(cantidad_aros_introduccida === 5){
+            juego_5_aros.style.display = "flex";
+            
+        }else if(cantidad_aros_introduccida === 6){
+            juego_6_aros.style.display = "flex";
+            
+        }else if(cantidad_aros_introduccida === 7){
+            juego_7_aros.style.display = "flex";
+            
+        }
+
+        
+        // Función para actualizar qué aros pueden moverse
+        function actualizarArosDraggables() {
+            torres.forEach(torre => {
+                let arosEnTorre = torre.querySelectorAll(".aro");
+            
+                // Deshabilitar todos los aros
+                arosEnTorre.forEach(aro => aro.setAttribute("draggable", false));
+            
+                // Habilitar solo el primero de cada torre
+                if (arosEnTorre.length > 0) {
+                    arosEnTorre[0].setAttribute("draggable", true)
+                }
+            });
+        }
+
+        // Asignar eventos a las torres
+        torres.forEach(torre => {
+            torre.addEventListener("dragstart", function (e) {
+                if (e.target.classList.contains("aro") && e.target.getAttribute("draggable") === "true") {
+                    aroSeleccionado = e.target // Guardar aro en movimiento
+                }
+            })
+        
+            torre.addEventListener("dragover", function (e) {
+                e.preventDefault() // Permitir soltar
+            });
+        
+            torre.addEventListener("drop", function (e) {
+                e.preventDefault()
+                if (!aroSeleccionado) return // Evita errores si no hay aro seleccionado
+            
+                let primer_aro = this.querySelector(".aro")
+            
+                // Verificar si se puede colocar el aro
+                if (!primer_aro || parseInt(primer_aro.textContent) > parseInt(aroSeleccionado.textContent)) {
+                    this.prepend(aroSeleccionado);
+                    aroSeleccionado = null // Limpiar variable después de mover
+                    actualizarArosDraggables() // Refrescar aros arrastrables
+                    
+                    if(cantidad_aros_introduccida === 3 && torre_3_1.textContent.replace(/\s+/g, '') === "123"){
+                        alert("Felicidades has ganado")
+
+                    }else if(cantidad_aros_introduccida === 4 && torre_3_2.textContent.replace(/\s+/g, '') === "1234"){
+                        alert("Felicidades has ganado")
+
+                    }else if(cantidad_aros_introduccida === 5 &&torre_3_3.textContent.replace(/\s+/g, '') === "12345"){
+                        alert("Felicidades has ganado")
+                        
+                    }else if(cantidad_aros_introduccida === 6 && torre_3_4.textContent.replace(/\s+/g, '') === "123456"){
+                        alert("Felicidades has ganado")
+                        
+                    }else if(cantidad_aros_introduccida === 7 && torre_3_5.textContent.replace(/\s+/g, '') === "1234567"){
+                        alert("Felicidades has ganado")
+                        
+                    }
+                    
+                    contador_movimientos = contador_movimientos + 1
+                    span_cantidad_movimientos.innerHTML = contador_movimientos
+
+                }
+            })
+        })
+
+        // Iniciar el estado correcto de los aros
+        actualizarArosDraggables()
+
+        if(cantidad_aros_introduccida === 3){
+            span_movimientos_minimos.innerHTML = 7
+
+        }else if(cantidad_aros_introduccida === 4){
+            span_movimientos_minimos.innerHTML = 15
+
+        }else if(cantidad_aros_introduccida === 4){
+            span_movimientos_minimos.innerHTML = 15
+
+        }else if(cantidad_aros_introduccida === 5){
+            span_movimientos_minimos.innerHTML = 31
+
+        }else if(cantidad_aros_introduccida === 6){
+            span_movimientos_minimos.innerHTML = 63
+
+        }else if(cantidad_aros_introduccida === 7){
+            span_movimientos_minimos.innerHTML = 127
+
+        }
+    
     </script>
 </body>
 </html>
