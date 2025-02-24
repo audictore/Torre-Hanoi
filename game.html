@@ -178,7 +178,7 @@
         }
 
         section button:hover{
-            width: 25%;
+            width: 20%;
             height: 4rem;
             display: flex;
             justify-content: center;
@@ -318,8 +318,8 @@
     </main>
 
     <section>
-        <button>Reiniciar</button>
-        <span>Tiempo: <span id="cronometro"></span></span>
+        <button id="button_reiniciar_juego">Reiniciar</button>
+        <span>Tiempo: <span id="reloj">00:00:00</span></span>
         <span>Movimientos minimos: <span class="span_movimientos_minimos" id="span_movimientos_minimos"></span></span>
         <span>Movimientos realizados: <span class="span_cantidad_movimientos" id="span_cantidad_movimientos">0</span> </span>
     </section>
@@ -332,6 +332,7 @@
         let span_cantidad_aros_introduccida = document.getElementById("span_cantidad_aros_introduccida")
 
         let juego_3_aros = document.querySelector(".juego_3_aros")
+        let estado_original_juego_3_aros = juego_3_aros.innerHTML
         let juego_4_aros = document.querySelector(".juego_4_aros")
         let juego_5_aros = document.querySelector(".juego_5_aros")
         let juego_6_aros = document.querySelector(".juego_6_aros")
@@ -348,9 +349,14 @@
         let torre_3_5 = document.querySelector(".torre_3_5")
         let aroSeleccionado = null
 
+        let button_reiniciar_juego = document.getElementById("button_reiniciar_juego")
         let span_movimientos_minimos = document.getElementById("span_movimientos_minimos")
         let span_cantidad_movimientos = document.getElementById("span_cantidad_movimientos")
         let contador_movimientos = 0
+
+        let segundos = 0
+        let minutos = 0
+        let horas = 0
 
         span_name_user.innerHTML = name_user
         span_cantidad_aros_introduccida.innerHTML = cantidad_aros_introduccida
@@ -445,9 +451,6 @@
         }else if(cantidad_aros_introduccida === 4){
             span_movimientos_minimos.innerHTML = 15
 
-        }else if(cantidad_aros_introduccida === 4){
-            span_movimientos_minimos.innerHTML = 15
-
         }else if(cantidad_aros_introduccida === 5){
             span_movimientos_minimos.innerHTML = 31
 
@@ -458,6 +461,41 @@
             span_movimientos_minimos.innerHTML = 127
 
         }
+
+        button_reiniciar_juego.addEventListener("click", reiniciar_juego)
+
+        function reiniciar_juego(){
+            location.reload()
+
+        }
+
+        function actualizarReloj(){
+            segundos++
+
+            if(segundos === 60){
+                segundos = 0
+                minutos++
+
+                if(minutos === 60){
+                    minutos = 0
+                    horas++
+
+                    if(horas === 100){
+                        horas = 0
+                    }
+                }
+
+            }
+
+            let formato = 
+                String(horas).padStart(2, '0') + ":" + 
+                String(minutos).padStart(2, '0') + ":" + 
+                String(segundos).padStart(2, '0')
+
+            document.getElementById("reloj").textContent = formato
+        }
+
+        setInterval(actualizarReloj, 1000)
     
     </script>
 </body>
