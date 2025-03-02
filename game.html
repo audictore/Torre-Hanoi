@@ -582,19 +582,22 @@
 
             // Usar html2canvas para capturar el contenido del div
             html2canvas(content).then(function(canvas) {
-            // Obtener la imagen generada
-            var imgData = canvas.toDataURL('image/png');
+                // Obtener la imagen generada
+                var imgData = canvas.toDataURL('image/png');
 
-            // Crear un nuevo documento PDF en formato horizontal
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF('landscape'); // Indicamos 'landscape' para formato horizontal
+                // Crear un nuevo documento PDF en formato horizontal
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF('landscape'); // Indicamos 'landscape' para formato horizontal
 
-            // Ajustar el tamaño del PDF a la página completa
-            doc.addImage(imgData, 'PNG', 0, 0, doc.internal.pageSize.width, doc.internal.pageSize.height);
+                // Ajustar el tamaño del PDF a la página completa
+                doc.addImage(imgData, 'PNG', 0, 0, doc.internal.pageSize.width, doc.internal.pageSize.height);
 
-            // Descargar el PDF
-            doc.save('documento_torre_hanoi.pdf');
-})
+                // Descargar el PDF
+                doc.save('documento_torre_hanoi.pdf')
+ 
+            })
+
+            certificado.style.display = "none";
         }
     
     </script>
