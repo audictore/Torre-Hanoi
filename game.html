@@ -200,6 +200,54 @@
             color: var(--color-aquamarine);
         }
 
+        .certificado{
+            width: 50%;
+            height: 60vh;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            position: fixed;
+            background-color: var(--color-oxford-blue);
+            color: var(--color-aquamarine);
+            font-family: var(--font-family-poppins);
+            border: solid 1px var(--color-cool-gray);
+            border-radius: 5px;
+        }
+
+        .certificado span{
+            font-size: var(--font-size-sm);
+            color: var(--color-cool-gray);
+        }
+
+        .certificado button{
+            width: 50%;
+            height: 4rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--color-oxford-blue);
+            color: var(--color-aquamarine);
+            font-size: var(--font-size-sm);
+            cursor: pointer;
+            border: solid 1px var(--color-aquamarine);
+            border-radius: 5px;
+        }
+
+        .certificado button:hover{
+            width: 50%;
+            height: 4rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--color-aquamarine);
+            color: var(--color-oxford-blue);
+            font-size: var(--font-size-sm);
+            border: solid 1px var(--color-aquamarine);
+            border-radius: 5px;
+        }
+        
+
     </style>
 
 </head>
@@ -323,8 +371,21 @@
         <span>Movimientos minimos: <span class="span_movimientos_minimos" id="span_movimientos_minimos"></span></span>
         <span>Movimientos realizados: <span class="span_cantidad_movimientos" id="span_cantidad_movimientos">0</span> </span>
     </section>
+
+    <div class="certificado" id="certificado">
+        <h1>¡Felicidades!</h1>
+        <h2>Haz completado de Torre de Hanói</h2>
+        <span class="span_name_user_certificado" id="span_name_user_certificado"></span>
+        <span>Cantidad de aros: <span id="span_cantidad_aros_introduccida_certificado"></span></span>
+        <span>Tiempo: <span id="reloj_certificado">00:00:00</span></span>
+        <span>Movimientos realizados: <span class="span_cantidad_movimientos_certificado" id="span_cantidad_movimientos_certificado">0</span> </span>
+        <br>
+        <button id="button_descargar_certificado">Certificado</button>
+    </div>
     
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
         let name_user = localStorage.getItem("name_user")
         let cantidad_aros_introduccida = parseInt(localStorage.getItem("cantidad_aros_introduccida"))
@@ -358,6 +419,13 @@
         let minutos = 0
         let horas = 0
 
+        let certificado = document.getElementById("certificado")
+        let span_name_user_certificado = document.getElementById("span_name_user_certificado")
+        let span_cantidad_aros_introduccida_certificado = document.getElementById("span_cantidad_aros_introduccida_certificado")
+        let reloj_certificado = document.getElementById("reloj_certificado")
+        let span_cantidad_movimientos_certificado = document.getElementById("span_cantidad_movimientos_certificado")
+        let button_descargar_certificado = document.getElementById("button_descargar_certificado")
+
         span_name_user.innerHTML = name_user
         span_cantidad_aros_introduccida.innerHTML = cantidad_aros_introduccida
 
@@ -385,7 +453,7 @@
                 let arosEnTorre = torre.querySelectorAll(".aro");
             
                 // Deshabilitar todos los aros
-                arosEnTorre.forEach(aro => aro.setAttribute("draggable", false));
+                arosEnTorre.forEach(aro => aro.setAttribute("draggable", false))
             
                 // Habilitar solo el primero de cada torre
                 if (arosEnTorre.length > 0) {
@@ -419,19 +487,19 @@
                     actualizarArosDraggables() // Refrescar aros arrastrables
                     
                     if(cantidad_aros_introduccida === 3 && torre_3_1.textContent.replace(/\s+/g, '') === "123"){
-                        alert("Felicidades has ganado")
+                        crear_certificado()
 
                     }else if(cantidad_aros_introduccida === 4 && torre_3_2.textContent.replace(/\s+/g, '') === "1234"){
-                        alert("Felicidades has ganado")
+                        crear_certificado()
 
                     }else if(cantidad_aros_introduccida === 5 &&torre_3_3.textContent.replace(/\s+/g, '') === "12345"){
-                        alert("Felicidades has ganado")
+                        crear_certificado()
                         
                     }else if(cantidad_aros_introduccida === 6 && torre_3_4.textContent.replace(/\s+/g, '') === "123456"){
-                        alert("Felicidades has ganado")
+                        crear_certificado()
                         
                     }else if(cantidad_aros_introduccida === 7 && torre_3_5.textContent.replace(/\s+/g, '') === "1234567"){
-                        alert("Felicidades has ganado")
+                        crear_certificado()
                         
                     }
                     
@@ -496,6 +564,38 @@
         }
 
         setInterval(actualizarReloj, 1000)
+
+
+        function crear_certificado(){
+            span_name_user_certificado.innerHTML = name_user
+            span_cantidad_aros_introduccida_certificado.innerHTML = cantidad_aros_introduccida
+            reloj_certificado.innerHTML = reloj.textContent
+            span_cantidad_movimientos_certificado.innerHTML = contador_movimientos + 1
+
+            certificado.style.display = "flex";
+        }
+
+        button_descargar_certificado.addEventListener("click", descargar_pdf)
+
+        function descargar_pdf(){
+            var content = document.getElementById('certificado');
+
+            // Usar html2canvas para capturar el contenido del div
+            html2canvas(content).then(function(canvas) {
+            // Obtener la imagen generada
+            var imgData = canvas.toDataURL('image/png');
+
+            // Crear un nuevo documento PDF en formato horizontal
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF('landscape'); // Indicamos 'landscape' para formato horizontal
+
+            // Ajustar el tamaño del PDF a la página completa
+            doc.addImage(imgData, 'PNG', 0, 0, doc.internal.pageSize.width, doc.internal.pageSize.height);
+
+            // Descargar el PDF
+            doc.save('documento_torre_hanoi.pdf');
+})
+        }
     
     </script>
 </body>
